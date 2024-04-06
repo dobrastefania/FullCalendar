@@ -9,6 +9,26 @@ body
     position: relative;
     overflow: scroll;
 }
+.login-container,
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
 
 .logo 
 {
@@ -136,7 +156,9 @@ navpg {
   align-items: center;
   z-index: 999;
 }
+
 .navbarpg
 {
     margin-right: 80px;
 }
+
