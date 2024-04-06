@@ -1,6 +1,6 @@
 body 
 {
-  
+    background: linear-gradient(to right,#0d0d3f,#400240 );
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     overflow: hidden;
@@ -9,7 +9,6 @@ body
     position: relative;
     overflow: scroll;
 }
-
 
 .logo 
 {
@@ -33,7 +32,7 @@ body
 }
 
 nav {
-    background-color: rgba(53, 51, 51, 0.36);
+    background-color: rgba(0, 0, 0, 0.36);
     height: 80px;
     width: 100%;
     display: flex;
@@ -44,18 +43,13 @@ nav {
     margin-top: 80px; 
 }
 
-
-
-
-
-/*meniu drop down*/
 ul 
 {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: transparent;
+  /*background-color: transparent;*/
   z-index: 999;
 }
 li 
@@ -68,7 +62,7 @@ li a,
 .dropbtn 
 {
   display: inline-block;
-  color: rgb(59, 9, 9);
+  color: rgb(252, 252, 252);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -79,7 +73,7 @@ li a,
 li a:hover,
 .dropdown:hover .dropbtn
 {
-  background-color: dodgerblue;
+  background-color: rgb(9, 46, 83);
   border-radius: 5px;
 }
 
@@ -110,18 +104,15 @@ li.dropdown
 
 .dropdown-content a:hover
 {
-  background-color: dodgerblue;
+  background-color: rgb(3, 32, 60);
 }
 
 .dropdown:hover .dropdown-content
 {
     display: block;
 }
-
-/*logo si navbar in pagini - nu acasa*/
-
 navpg {
-    background-color: rgba(53, 51, 51, 0.36);
+    background-color: rgba(0, 0, 0, 0.36);
     height: 80px;
     width: 100%;
     display: flex;
@@ -133,7 +124,7 @@ navpg {
   
 .logopg 
 {
-  background-image: url(tipacuapa.jpg);
+  /*background-image: url(tipacuapa.jpg);*/
   font-size: 35px;
   line-height: 80px;
   height: 180px;
