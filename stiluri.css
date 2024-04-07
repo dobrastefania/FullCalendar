@@ -30,6 +30,52 @@ body
   z-index: 1;
 }
 
+.card {
+  justify-content: center;
+  /*background:linear-gradient(to right, #191654, #8a34c8, #7d0d94);*/
+  background-color: azure;
+  border: #000 5px solid;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.card-header {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.card-body btn btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.card-button:hover {
+  background-color: #0056b3;
+}
+
 .logo 
 {
   background:none;
