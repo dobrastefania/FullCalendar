@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Pulse</title>
+    <link rel="stylesheet" href="stiluri.css">
+    <style>
+        p {margin: 0px}
+    </style>
+</head>
+<body class="bodyplt"> 
+    <div style="background: linear-gradient(to bottom right, #000000 37%, #666699 69%)"></div>
+    <navpg>
+        <p class="logopg"><font color="#00ccff"><i>Project</i></font><font color="#ff6699"><i>Pulse</i></font></p>
+        <ul class="navbar">
+            <li><a href="index.html">Platform</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </navpg>
+    <div class="faq-container">
+        <div class="faq-item">
+          <div class="question">Can I be a member of multiple teams simultaneously?</div>
+            <div class="answer">
+                <p align ="justify">
+                   Yes, in our platform, users can be members of multiple teams simultaneously. 
+                   This flexibility allows users to participate in various projects and contribute to different teams at the same time. 
+                   However, each user must manage their responsibilities effectively to
+                   ensure they can provide valuable contributions to each team they are associated with.
+                </p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="question">What is the maximum number of teams I can join?</div>
+              <div class="answer">
+                  <p align ="justify">
+                    The maximum number of teams a user can join is limited to 10 teams per user, including the possibility of being a coach for one of those teams. 
+                    While users have the flexibility to join multiple teams, adherence to this limit ensures organizational structure and prevents overcrowding within the platform. 
+                    Users should consider their capacity to actively participate and contribute meaningfully to each team before joining multiple groups.
+                  </p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="question">Are there in-app purchases?</div>
+              <div class="answer">
+                  <p align ="justify"> 
+                    Yes, our platform may offer in-app purchases, providing users with the option to buy additional features, premium content,
+                    virtual goods, or subscriptions directly within the app. These purchases enhance the user experience by unlocking exclusive features or accessing premium content. 
+                    Users should review the pricing, terms, and payment methods associated with in-app purchases before making any transactions to ensure transparency and avoid unexpected charges.
+                  </p>
+              </div>
+          </div>
+      
+        <div class="faq-item">
+            <div class="question">Are there any costs associated with using the application?</div>
+              <div class="answer">
+                  <p align ="justify">
+                    While our platform offers a free version with basic functionalities, there may be costs associated with 
+                    accessing advanced features, premium content, or additional services. Users should review the app's pricing structure, subscription plans, and any associated fees or charges before using premium features or content. It's advisable to consider the value proposition, benefits, 
+                    and affordability of paid options compared to free alternatives to make informed decisions about utilizing the application.
+                  </p>
+              </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Can I use the application for free?</div>
+              <div class="answer">
+                <p align ="justify">  
+                Yes, our platform offers a free version with essential features and functionalities available at no cost to users. 
+                The free version allows individuals to explore the app's capabilities, evaluate its suitability for their needs, 
+                and benefit from basic functionality without any upfront payment. While the free version may offer limited access to certain 
+                features or content, users can choose to upgrade to premium versions or make in-app purchases to unlock additional features or access exclusive content based on their preferences and requirements
+                  </p>
+              </div>
+          </div>
+
+        <div class="other-questions">
+          <p> <b>Do you have any other questions? Chat with us!</b></p>
+          <textarea id="chat-input" rows="4" placeholder="Scrie aici..."></textarea>
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+      <script>
+        function sendMessage() {
+          var message = document.getElementById("chat-input").value;
+          if (message.trim() !== "") {
+            alert("Hello, I am Marko, your virtual assistant. At this moment, all our workers are busy, but they will get back to you with an answer soon. Thank you for your understanding.");
+            document.getElementById("chat-input").value = "";
+          }
+        }
+      </script>
+</body>
+</html>
