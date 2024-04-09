@@ -1,8 +1,25 @@
-<h2>{{schedule.description}}</h2>
-<!-- <div><span>Date: </span>{{schedule.date}}</div>
-<div><span>Start time: </span>{{schedule.startTime}}</div>
-<div><span>End time: </span>{{schedule.endTime}}</div> -->
+<!-- <h2>{{schedule.description}}</h2>
 
 <div><label for="date">Date: </label><input id="date" [(ngModel)]="schedule.date" placeholder="date"></div>
 <div><label for="startTime">Start time: </label><input id="startTime" [(ngModel)]="schedule.startTime" placeholder="startTime"></div>
-<div><label for="endTime">End time:  </label><input id="endTime" [(ngModel)]="schedule.endTime" placeholder="endTime"></div>
+<div><label for="endTime">End time:  </label><input id="endTime" [(ngModel)]="schedule.endTime" placeholder="endTime"></div> -->
+<h2>Schedules</h2>
+<ul class="schedules">
+    <li *ngFor="let schedule of schedules">
+        <button type="button" (click)="onSelect(schedule)">
+            <span class="description">{{schedule.description}}</span>
+            <span class="date">{{schedule.date}}</span>
+            <span class="startTime">{{schedule.startTime}}</span>
+            <span class="endTime">{{schedule.endTime}}</span>
+        </button>
+    </li>
+</ul>
+
+<div *ngIf="selectedSchedule">
+    <h2>{{selectedSchedule.description}}</h2>
+    <div>date: {{selectedSchedule.date}}</div>
+    <div>
+        <label for="schedule-date">Date: </label>
+        <input id="schedule-date" [(ngModel)]="selectedSchedule.date" placeholder="date">
+    </div>
+</div>
