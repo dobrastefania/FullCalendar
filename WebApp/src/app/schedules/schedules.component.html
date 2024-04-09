@@ -8,18 +8,19 @@
     <li *ngFor="let schedule of schedules">
         <button type="button" (click)="onSelect(schedule)">
             <span class="description">{{schedule.description}}</span>
-            <span class="date">{{schedule.date}}</span>
+            <!-- <span class="date">{{schedule.date}}</span>
             <span class="startTime">{{schedule.startTime}}</span>
-            <span class="endTime">{{schedule.endTime}}</span>
+            <span class="endTime">{{schedule.endTime}}</span> -->
         </button>
     </li>
 </ul>
 
 <div *ngIf="selectedSchedule">
     <h2>{{selectedSchedule.description}}</h2>
-    <div>date: {{selectedSchedule.date}}</div>
     <div>
         <label for="schedule-date">Date: </label>
         <input id="schedule-date" [(ngModel)]="selectedSchedule.date" placeholder="date">
+        <div><label for="startTime">Start time: </label><input id="startTime" [(ngModel)]="selectedSchedule.startTime" placeholder="startTime"></div>
+        <div><label for="endTime">End time:  </label><input id="endTime" [(ngModel)]="selectedSchedule.endTime" placeholder="endTime"></div>
     </div>
 </div>
