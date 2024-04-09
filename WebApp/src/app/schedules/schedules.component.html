@@ -1,0 +1,8 @@
+<h2>{{schedule.description}}</h2>
+<!-- <div><span>Date: </span>{{schedule.date}}</div>
+<div><span>Start time: </span>{{schedule.startTime}}</div>
+<div><span>End time: </span>{{schedule.endTime}}</div> -->
+
+<div><label for="date">Date: </label><input id="date" [(ngModel)]="schedule.date" placeholder="date"></div>
+<div><label for="startTime">Start time: </label><input id="startTime" [(ngModel)]="schedule.startTime" placeholder="startTime"></div>
+<div><label for="endTime">End time:  </label><input id="endTime" [(ngModel)]="schedule.endTime" placeholder="endTime"></div>
