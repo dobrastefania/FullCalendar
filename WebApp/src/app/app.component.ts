@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SchedulesComponent } from './schedules/schedules.component';
 import { UsersComponent } from './users/users.component';
-
+import { MessagesComponent } from './messages/messages.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SchedulesComponent, UsersComponent],
+  imports: [RouterOutlet, SchedulesComponent, UsersComponent,MessagesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

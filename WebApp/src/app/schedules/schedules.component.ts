@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Schedule } from '../schedule';
 import { NgIf, Time, UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SCHEDULES } from '../mock-schedules';
+import { ScheduleService } from '../schedule.service';
+import { MessageService } from '../message.service';
 import {
   /* . . . */
   NgFor,
@@ -16,10 +17,25 @@ import {
   templateUrl: './schedules.component.html',
   styleUrl: './schedules.component.css'
 })
+
 export class SchedulesComponent {
-  schedules=SCHEDULES;
+
+  constructor(private scheduleService: ScheduleService, private messageService:MessageService) { }
+  schedules:Schedule[]=[];
   selectedSchedule?: Schedule;
+
   onSelect(schedule: Schedule): void {
     this.selectedSchedule = schedule;
+    this.messageService.add(`SchedulesComponent: Selected schedule id=${schedule.id}`);
   }
+
+  getSchedules(): void {
+    this.scheduleService.getSchedules().subscribe(schedules => this.schedules = schedules);
+  }
+
+  ngOnInit() {
+    this.getSchedules();
+  }
+
+
 }
