@@ -1,38 +1,195 @@
 <!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
-    <script src="javascript.js"></script> 
-  </head>
-  <body>
-    <div id='external-events'>
-      <p>
-        <strong>Draggable Events</strong>
-      </p>
-    
-      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event' data-color="#ff0000" data-id="1">
-        <div class='fc-event-main'>My Event 1</div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <style>
+        .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content button {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      width: 100%;
+      border: none;
+      background: none;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #ddd;
+      transform: scale(1.15);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* Stiluri pentru modul luminos */
+    body {
+      color: #333;
+    }
+
+    #calendar {
+      margin-top: 20px;
+    }
+
+    /* Stiluri pentru modul întunecat */
+    body.dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+
+    header.dark-mode {
+      padding: 20px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    .dropdown-content.dark-mode {
+      background-color: #222;
+    }
+
+    .dropdown-content.dark-mode button {
+      color: #fff;
+    }
+
+    .button-delete.dark-mode {
+      background-color: #dc3545;
+    }
+
+    .button-delete.dark-mode:hover {
+      background-color: #c82333;
+    }
+
+    /* Buton Dark Mode */
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <div id="external-events">
+    <p><strong>Draggable Events</strong></p>
+    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event draggable" data-color="#ff0000" data-id="1">
+      <div class="fc-event-main">My Event 1</div>
+    </div>
+    <!-- Restul evenimentelor -->
+    <p><input type="checkbox" id="drop-remove" /><label for="drop-remove">remove after drop</label></p>
+    <div class="dropdown">
+      <button class="button">Actions</button>
+      <div class="dropdown-content">
+        <button id="add-event" class="button">Add Event</button>
+        <button id="delete-event" class="button button-delete">Delete Event</button>
+        <button id="modify-event" class="button">Modify Event</button>
       </div>
-      <!-- Restul evenimentelor -->
-    
-      <p>
-        <input type='checkbox' id='drop-remove' />
-        <label for='drop-remove'>remove after drop</label>
-      </p>
-      <button id="add-event">Add Event</button>
-      <button id="delete-event">Delete Event</button>
-      <button id="modify-event">Modify Event</button>
     </div>
-    
-    <div id='calendar-container'>
-      <div id='calendar'></div>
-    </div>
-
-    <div id="date-picker"></div>
-
-  </body>
+  </div>
+  <div id="calendar-container">
+    <div id="calendar"></div>
+  </div>
+  <div id="date-picker"></div>
+  <!-- Buton Dark Mode -->
+  <button class="dark-mode-toggle" id="dark-mode-toggle">Dark Mode</button>
+  
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var Calendar = FullCalendar.Calendar;
+      var Draggable = FullCalendar.Draggable;
+      var calendarEl = document.getElementById('calendar');
+      var datePicker = document.getElementById('date-picker');
+      var calendar = new Calendar(calendarEl, {
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        editable: true,
+        droppable: true,
+        drop: function(info) {
+          if (checkbox.checked) {
+            info.draggedEl.parentNode.removeChild(info.draggedEl);
+          }
+        }
+      });
+      calendar.render();
+      var datepicker = flatpickr(datePicker, {
+        dateFormat: 'Y-m-d',
+        defaultDate: new Date(),
+        onChange: function(selectedDates, dateStr, instance) {
+          // Do something with selected date if needed
+        }
+      });
+      document.getElementById('add-event').addEventListener('click', function() {
+        var eventTitle = prompt('Enter event title:');
+        var eventDate = datePicker.value;
+        if (eventTitle && eventDate) {
+          calendar.addEvent({ title: eventTitle, start: eventDate, allDay: true, color: '#ff0000' });
+        } else {
+          alert('Please enter both title and date.');
+        }
+      });
+      document.getElementById('delete-event').addEventListener('click', function() {
+        var eventDate = datePicker.value;
+        var events = calendar.getEvents();
+        events.forEach(function(event) {
+          if (event.start.toISOString().split('T')[0] === eventDate) {
+            event.remove();
+          }
+        });
+      });
+      document.getElementById('modify-event').addEventListener('click', function() {
+        var eventName = prompt('Enter event name:');
+        var eventDate = datePicker.value;
+        var events = calendar.getEvents();
+        events.forEach(function(event) {
+          if (event.start.toISOString().split('T')[0] === eventDate && event.title === eventName) {
+            var newTitle = prompt('Enter new title:');
+            if (newTitle) {
+              event.setProp('title', newTitle);
+            }
+          }
+        });
+      });
+      document.getElementById('dark-mode-toggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        var darkModeEnabled = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', darkModeEnabled ? 'enabled' : 'disabled');
+        this.textContent = darkModeEnabled ? 'Light Mode' : 'Dark Mode';
+      });
+      var darkMode = localStorage.getItem('darkMode');
+      var darkModeToggle = document.getElementById('dark-mode-toggle');
+      if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.textContent = 'Light Mode';
+      } else {
+        darkModeToggle.textContent = 'Dark Mode';
+      }
+    });
+  </script>
+</body>
 </html>
