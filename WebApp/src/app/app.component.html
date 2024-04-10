@@ -1,3 +1,9 @@
-<h1>{{title}}</h1>
-<app-schedules></app-schedules>
-<app-messages></app-messages>
+<h1>Angular Router App</h1>
+<nav>
+  <ul>
+    <li><a routerLink="/schedules" routerLinkActive="active" ariaCurrentWhenActive="page" href="/schedules">Schedules</a></li>
+    <!-- <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li> -->
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
