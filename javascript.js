@@ -2,21 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var Calendar = FullCalendar.Calendar;
   var Draggable = FullCalendar.Draggable;
 
-  var containerEl = document.getElementById('external-events');
   var calendarEl = document.getElementById('calendar');
-  var checkbox = document.getElementById('drop-remove');
-
-  // initialize the external events
-  // -----------------------------------------------------------------
-
-  new Draggable(containerEl, {
-    itemSelector: '.fc-event',
-    eventData: function(eventEl) {
-      return {
-        title: eventEl.innerText
-      };
-    }
-  });
+  var datePicker = document.getElementById('date-picker');
 
   // initialize the calendar
   // -----------------------------------------------------------------
@@ -39,4 +26,50 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   calendar.render();
+
+  // Initialize Flatpickr date picker
+  var datepicker = flatpickr(datePicker, {
+    dateFormat: 'Y-m-d',
+    defaultDate: new Date(),
+    onChange: function(selectedDates, dateStr, instance) {
+      // Do something with selected date if needed
+    }
+  });
+
+  // Add Event Button
+  document.getElementById('add-event').addEventListener('click', function() {
+    var eventTitle = prompt('Enter event title:');
+    var eventDate = datePicker.value;
+    if (eventTitle && eventDate) {
+      calendar.addEvent({ title: eventTitle, start: eventDate, allDay: true, color: '#ff0000' });
+    } else {
+      alert('Please enter both title and date.');
+    }
+  });
+
+  // Delete Event Button
+  document.getElementById('delete-event').addEventListener('click', function() {
+    var eventDate = datePicker.value;
+    var events = calendar.getEvents();
+    events.forEach(function(event) {
+      if (event.start.toISOString().split('T')[0] === eventDate) {
+        event.remove();
+      }
+    });
+  });
+
+  // Modify Event Button
+  document.getElementById('modify-event').addEventListener('click', function() {
+    var eventName = prompt('Enter event name:');
+    var eventDate = datePicker.value;
+    var events = calendar.getEvents();
+    events.forEach(function(event) {
+      if (event.start.toISOString().split('T')[0] === eventDate && event.title === eventName) {
+        var newTitle = prompt('Enter new title:');
+        if (newTitle) {
+          event.setProp('title', newTitle);
+        }
+      }
+    });
+  });
 });
