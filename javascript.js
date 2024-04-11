@@ -111,27 +111,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Adăugarea funcționalității pentru căutarea datelor în calendar
   document.getElementById('search-date').addEventListener('input', function(event) {
-    var searchDate = event.target.value; // Obține data introdusă în bara de căutare
+    var searchDate = event.target.value;
 
-    var parsedDate = new Date(searchDate); // Converteste data introdusa in format de data
+    var parsedDate = new Date(searchDate); 
 
-    if (!isNaN(parsedDate.getTime())) { // Verifica daca data este valida
-      calendar.gotoDate(parsedDate); // Mergi la data specificata in calendar
+    if (!isNaN(parsedDate.getTime())) { 
+      calendar.gotoDate(parsedDate); 
     } else {
-      alert("Please enter a valid date."); // Afiseaza un mesaj de eroare daca data introdusa nu este valida
+      alert("Please enter a valid date."); 
     }
   });
 
   document.getElementById('get-holidays').addEventListener('click', function() {
-    // Funcția pentru obținerea sărbătorilor
-    //function getHolidays() {
-      var currentDate = new Date();
-      var year = currentDate.getFullYear();
-      var month = currentDate.getMonth() + 1;
-      var day = currentDate.getDate();
+      var year = prompt('Enter the year you want to search for holidays:');
+      var month = prompt('Enter the month you want to search for holidays:');
+      var day = prompt('Enter the day you want to search for holidays:');
       var formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
-      document.getElementById('holidaysData').innerHTML = 'holidayData';
-      fetch('https://holidays.abstractapi.com/v1/?api_key=9bc2117a54174d4dbafa38816a7870ea&country=US&year=2020&month=12&day=25')
+      
+      fetch('https://holidays.abstractapi.com/v1/?api_key=9bc2117a54174d4dbafa38816a7870ea&country=US&year='+ year+'&month='+month+'&day='+day)
         .then(response => response.json())
         .then(data => {
           var holidayData = '';
