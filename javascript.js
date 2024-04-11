@@ -122,16 +122,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('get-holidays').addEventListener('click', function() {
     // Funcția pentru obținerea sărbătorilor
-    function getHolidays() {
+    //function getHolidays() {
       var currentDate = new Date();
       var year = currentDate.getFullYear();
       var month = currentDate.getMonth() + 1;
       var day = currentDate.getDate();
       var formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
-  
-      fetch('https://holidays.abstractapi.com/v1/?api_key=your_api_key&country=US&year=' + year + '&month=' + month + '&day=' + day)
+      document.getElementById('holidaysData').innerHTML = 'holidayData';
+      fetch('https://holidays.abstractapi.com/v1/?api_key=9bc2117a54174d4dbafa38816a7870ea&country=US&year=2020&month=12&day=25')
         .then(response => response.json())
         .then(data => {
           var holidayData = '';
@@ -144,12 +144,12 @@ document.addEventListener('DOMContentLoaded', function() {
           } else {
             holidayData = '<p>No holidays found for ' + formattedDate + '</p>';
           }
-          document.getElementById('weatherData').innerHTML = holidayData;
+          document.getElementById('holidaysData').innerHTML = holidayData;
         })
         .catch(error => {
           console.error('Error:', error);
         });
-    }
+    //}
   
     // Adăugăm evenimentul de clic pentru butonul "Get Holidays"
     document.getElementById('get-holidays').addEventListener('click', getHolidays);
