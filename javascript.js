@@ -121,4 +121,38 @@ document.addEventListener('DOMContentLoaded', function() {
       alert("Please enter a valid date."); // Afiseaza un mesaj de eroare daca data introdusa nu este valida
     }
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Funcția pentru obținerea sărbătorilor
+    function getHolidays() {
+      var currentDate = new Date();
+      var year = currentDate.getFullYear();
+      var month = currentDate.getMonth() + 1;
+      var day = currentDate.getDate();
+      var formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+  
+      fetch('https://holidays.abstractapi.com/v1/?api_key=your_api_key&country=US&year=' + year + '&month=' + month + '&day=' + day)
+        .then(response => response.json())
+        .then(data => {
+          var holidayData = '';
+          if (data.length > 0) {
+            holidayData += '<h3>Holidays:</h3><ul>';
+            data.forEach(holiday => {
+              holidayData += '<li>' + holiday.name + '</li>';
+            });
+            holidayData += '</ul>';
+          } else {
+            holidayData = '<p>No holidays found for ' + formattedDate + '</p>';
+          }
+          document.getElementById('weatherData').innerHTML = holidayData;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  
+    // Adăugăm evenimentul de clic pentru butonul "Get Holidays"
+    document.getElementById('get-holidays').addEventListener('click', getHolidays);
+  });
+  
 });

@@ -26,6 +26,7 @@ header {
   background-color: #c82333;
 }
 
+
 /* Stiluri pentru modul întunecat */
 .dark-mode body {
   background-color: #333;
@@ -46,11 +47,11 @@ header {
 }
 
 .dark-mode .button-delete {
-  background-color: #dc3545;
+  background-color: 222;
 }
 
 .dark-mode .button-delete:hover {
-  background-color: #c82333;
+  background-color: fff;
 }
 
 .dropdown {

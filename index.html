@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stiluri.css">
-  <script src="javascript.js"></script> 
+  <script src="javascript.js" defer></script>
   <title>Calendar</title>
 </head>
 <body class="light-mode">
@@ -18,12 +18,16 @@
         <button id="add-event" class="button">Add Event</button>
         <button id="delete-event" class="button button-delete">Delete Event</button>
         <button id="modify-event" class="button">Modify Event</button>
+        <!-- Butonul "Get Holidays" -->
+        <button id="get-holidays" class="button">Get Holidays</button>
       </div>
     </div>
   </div>
   <div id="calendar-container">
     <div id="calendar"></div>
   </div>
+  <!-- Div-ul pentru afișarea datelor despre vreme sau sărbători -->
+  <div id="weatherData"></div>
   <div id="date-picker"></div>
 
   <!-- Buton Dark Mode -->
