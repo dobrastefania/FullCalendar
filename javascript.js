@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var Draggable = FullCalendar.Draggable;
   var calendarEl = document.getElementById('calendar');
   var datePicker = document.getElementById('date-picker');
+  var storedEvents = JSON.parse(localStorage.getItem('events') || '[]');
+
   var calendar = new Calendar(calendarEl, {
     headerToolbar: {
       left: 'prev,next today',
@@ -11,12 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     editable: true,
     droppable: true,
+    events: storedEvents,
     drop: function(info) {
       if (checkbox.checked) {
         info.draggedEl.parentNode.removeChild(info.draggedEl);
       }
     }
   });
+
   calendar.render();
   var datepicker = flatpickr(datePicker, {
     dateFormat: 'Y-m-d',
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var eventTitle = prompt('Enter event title:');
     if (eventTitle && eventDate) {
       calendar.addEvent({ title: eventTitle, start: eventDate, allDay: true, color: '#ff0000' });
+      localStorage.setItem('events', JSON.stringify(calendar.getEvents()));
     } else {
       alert('Please enter both title and date.');
     }
@@ -53,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (eventDateStr === eventDate && event.title === eventTitle) {
         event.remove();
+        localStorage.setItem('events', JSON.stringify(calendar.getEvents()));
       }
     });
   });
@@ -75,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var newTitle = prompt('Enter new title:');
         if (newTitle) {
           event.setProp('title', newTitle);
+          localStorage.setItem('events', JSON.stringify(calendar.getEvents()));
         }
       }
     });
