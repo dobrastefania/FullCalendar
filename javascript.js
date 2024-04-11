@@ -95,4 +95,23 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     darkModeToggle.textContent = 'Dark Mode';
   }
+
+ 
+  var myEventButton = document.querySelector('.fc-event-main');
+  if (myEventButton && myEventButton.textContent === 'My Event 1') {
+    myEventButton.parentElement.remove();
+  }
+
+  // Adăugarea funcționalității pentru căutarea datelor în calendar
+  document.getElementById('search-date').addEventListener('input', function(event) {
+    var searchDate = event.target.value; // Obține data introdusă în bara de căutare
+
+    var parsedDate = new Date(searchDate); // Converteste data introdusa in format de data
+
+    if (!isNaN(parsedDate.getTime())) { // Verifica daca data este valida
+      calendar.gotoDate(parsedDate); // Mergi la data specificata in calendar
+    } else {
+      alert("Please enter a valid date."); // Afiseaza un mesaj de eroare daca data introdusa nu este valida
+    }
+  });
 });
