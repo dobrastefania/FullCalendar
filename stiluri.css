@@ -117,13 +117,13 @@ header.dark-mode {
   color: #fff;
 }
 
-.button-delete.dark-mode {
+/* .button-delete.dark-mode {
   background-color: #dc3545;
 }
 
 .button-delete.dark-mode:hover {
   background-color: #c82333;
-}
+} */
 
 
 .dark-mode-toggle {
