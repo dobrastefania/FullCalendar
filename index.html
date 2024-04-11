@@ -145,9 +145,10 @@
           //Do something with selected date if needed
         }
       });
+
       document.getElementById('add-event').addEventListener('click', function() {
+        var eventDate = prompt('Enter event date to add (Y-m-d):');
         var eventTitle = prompt('Enter event title:');
-        var eventDate = datePicker.value;
         if (eventTitle && eventDate) {
           calendar.addEvent({ title: eventTitle, start: eventDate, allDay: true, color: '#ff0000' });
         } else {
@@ -177,7 +178,7 @@
       });
 
       document.getElementById('modify-event').addEventListener('click', function() {
-        var eventDate = prompt('Enter event date to delete (Y-m-d):');
+        var eventDate = prompt('Enter event date to modify (Y-m-d):');
         var eventName = prompt('Enter event name:');
         var events = calendar.getEvents();
         events.forEach(function(event) {
@@ -205,7 +206,7 @@
         localStorage.setItem('darkMode', darkModeEnabled ? 'enabled' : 'disabled');
         this.textContent = darkModeEnabled ? 'Light Mode' : 'Dark Mode';
       });
-      
+
       var darkMode = localStorage.getItem('darkMode');
       var darkModeToggle = document.getElementById('dark-mode-toggle');
       if (darkMode === 'enabled') {
