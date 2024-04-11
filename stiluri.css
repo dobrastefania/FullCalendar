@@ -53,3 +53,87 @@ header {
   background-color: #c82333;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  width: 100%;
+  border: none;
+  background: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropdown-content button:hover {
+  background-color: #ddd;
+  transform: scale(1.15);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+body {
+  color: #333;
+}
+
+#calendar {
+  margin-top: 20px;
+}
+
+
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+header.dark-mode {
+  padding: 20px;
+  background-color: #222;
+  color: #fff;
+}
+
+.dropdown-content.dark-mode {
+  background-color: #222;
+}
+
+.dropdown-content.dark-mode button {
+  color: #fff;
+}
+
+.button-delete.dark-mode {
+  background-color: #dc3545;
+}
+
+.button-delete.dark-mode:hover {
+  background-color: #c82333;
+}
+
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 9999;
+}
