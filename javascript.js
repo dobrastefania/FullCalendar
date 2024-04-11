@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
   var datePicker = document.getElementById('date-picker');
 
-  // initialize the calendar
-  // -----------------------------------------------------------------
 
   var calendar = new Calendar(calendarEl, {
     headerToolbar: {
@@ -15,11 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
     editable: true,
-    droppable: true, // this allows things to be dropped onto the calendar
+    droppable: true, 
     drop: function(info) {
-      // is the "remove after drop" checkbox checked?
+      
       if (checkbox.checked) {
-        // if so, remove the element from the "Draggable Events" list
+        
         info.draggedEl.parentNode.removeChild(info.draggedEl);
       }
     }
@@ -27,12 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   calendar.render();
 
-  // Initialize Flatpickr date picker
+  
   var datepicker = flatpickr(datePicker, {
     dateFormat: 'Y-m-d',
     defaultDate: new Date(),
     onChange: function(selectedDates, dateStr, instance) {
-      // Do something with selected date if needed
+      
     }
   });
 

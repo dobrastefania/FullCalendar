@@ -38,7 +38,8 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
-    /* Stiluri pentru modul luminos */
+    
+
     body {
       color: #333;
     }
@@ -47,7 +48,7 @@
       margin-top: 20px;
     }
 
-    /* Stiluri pentru modul întunecat */
+   
     body.dark-mode {
       background-color: #333;
       color: #fff;
@@ -75,7 +76,7 @@
       background-color: #c82333;
     }
 
-    /* Buton Dark Mode */
+    
     .dark-mode-toggle {
       position: fixed;
       bottom: 20px;
@@ -141,7 +142,7 @@
         dateFormat: 'Y-m-d',
         defaultDate: new Date(),
         onChange: function(selectedDates, dateStr, instance) {
-          // Do something with selected date if needed
+          //Do something with selected date if needed
         }
       });
       document.getElementById('add-event').addEventListener('click', function() {
@@ -154,10 +155,11 @@
         }
       });
       document.getElementById('delete-event').addEventListener('click', function() {
-        var eventDate = datePicker.value;
+        var eventTitle = prompt('Enter event title:');
+        //var eventDate = datePicker.value;
         var events = calendar.getEvents();
         events.forEach(function(event) {
-          if (event.start.toISOString().split('T')[0] === eventDate) {
+          if (event.title==eventTitle) {//event.start.toISOString().split('T')[0] === eventDate
             event.remove();
           }
         });
@@ -167,7 +169,7 @@
         var eventDate = datePicker.value;
         var events = calendar.getEvents();
         events.forEach(function(event) {
-          if (event.start.toISOString().split('T')[0] === eventDate && event.title === eventName) {
+          if ( event.title === eventName) {
             var newTitle = prompt('Enter new title:');
             if (newTitle) {
               event.setProp('title', newTitle);
