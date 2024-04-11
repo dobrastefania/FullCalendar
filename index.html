@@ -154,16 +154,27 @@
           alert('Please enter both title and date.');
         }
       });
+      
       document.getElementById('delete-event').addEventListener('click', function() {
+        var eventDate = prompt('Enter event date to delete (Y-m-d):');
         var eventTitle = prompt('Enter event title:');
-        //var eventDate = datePicker.value;
         var events = calendar.getEvents();
         events.forEach(function(event) {
-          if (event.title==eventTitle) {//event.start.toISOString().split('T')[0] === eventDate
-            event.remove();
-          }
-        });
+        var date = event.start;
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+
+        if (month < 10) month = '0' + month;
+        if (day < 10) day = '0' + day;
+
+        var eventDateStr = year + '-' + month + '-' + day;
+
+        if (eventDateStr === eventDate && event.title === eventTitle) {
+          event.remove();
+        }
       });
+});
       document.getElementById('modify-event').addEventListener('click', function() {
         var eventName = prompt('Enter event name:');
         var eventDate = datePicker.value;
