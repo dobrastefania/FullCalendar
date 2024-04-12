@@ -14,21 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
     editable: true,
     droppable: true,
     events: storedEvents,
-    drop: function(info) {
-      if (checkbox.checked) {
-        info.draggedEl.parentNode.removeChild(info.draggedEl);
-      }
-    }
   });
 
   calendar.render();
-  var datepicker = flatpickr(datePicker, {
-    dateFormat: 'Y-m-d',
-    defaultDate: new Date(),
-    onChange: function(selectedDates, dateStr, instance) {
-      //Do something with selected date if needed
-    }
-  });
+  
 
   document.getElementById('add-event').addEventListener('click', function() {
     var eventDate = prompt('Enter event date to add (Y-m-d):');
@@ -103,13 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     darkModeToggle.textContent = 'Dark Mode';
   }
 
- 
-  var myEventButton = document.querySelector('.fc-event-main');
-  if (myEventButton && myEventButton.textContent === 'My Event 1') {
-    myEventButton.parentElement.remove();
-  }
-
-  // Adăugarea funcționalității pentru căutarea datelor în calendar
+  
   document.getElementById('search-date').addEventListener('input', function(event) {
     var searchDate = event.target.value;
 
@@ -146,10 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
           console.error('Error:', error);
         });
-    //}
-  
-    // Adăugăm evenimentul de clic pentru butonul "Get Holidays"
-    document.getElementById('get-holidays').addEventListener('click', getHolidays);
   });
   
 });

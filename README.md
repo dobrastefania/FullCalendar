@@ -1,2 +1,1 @@
-# Web-Programming
-Web application for team work management
+Full Calenbdar for organizing events and displaying holidays
