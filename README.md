@@ -1,1 +1,1 @@
-Full Calenbdar for organizing events and displaying holidays
+Full Calendar for organizing events and displaying holidays
